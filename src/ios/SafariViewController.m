@@ -34,6 +34,11 @@
   vc = [[SFSafariViewController alloc] initWithURL:url entersReaderIfAvailable:readerMode];
   vc.delegate = self;
 
+  NSNumber *dismissButton = options[@"dismissButton"];
+    if(dismissButton != nil){
+        vc.dismissButtonStyle = [dismissButton intValue];
+    }
+
   bool hidden = [options[@"hidden"] isEqualToNumber:[NSNumber numberWithBool:YES]];
   if (hidden) {
     vc.view.userInteractionEnabled = NO;
